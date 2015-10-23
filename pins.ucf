@@ -1,24 +1,39 @@
-Net clk TNM_NET = sys_clk_pin;
-TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 24 MHz;
-Net clk TNM_NET = sys_clk_pin  |  LOC=K15 | IOSTANDARD = LVCMOS33;
-
+//Net clk TNM_NET = sys_clk_pin;
+//TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 6 MHz;
+//Net clk TNM_NET = sys_clk_pin  |  LOC=K15 | IOSTANDARD = LVCMOS33;
 Net reset TIG;
-Net reset LOC=H18 | IOSTANDARD = LVCMOS33;
+Net reset LOC=H18 |IOSTANDARD = LVCMOS33;
 
 CONFIG VCCAUX = "3.3" ;
+
+Net leds<0> LOC=J13 |IOSTANDARD = LVCMOS33;
+Net leds<1> LOC=K14 |IOSTANDARD = LVCMOS33;
+Net leds<2> LOC=U17 |IOSTANDARD = LVCMOS33;
+Net leds<3> LOC=U18 |IOSTANDARD = LVCMOS33;
+
+NET "ext_clk" IOSTANDARD = LVCMOS33;
+NET "ext_clk" DRIVE = 12;
+NET "ext_clk" SLEW = FAST;
+NET "ext_clk" LOC = A4;
+NET "ext_clk" CLOCK_DEDICATED_ROUTE = FALSE;
 
 NET "dac_clk" IOSTANDARD = LVCMOS33;
 NET "dac_clk" DRIVE = 12;
 NET "dac_clk" SLEW = FAST;
+NET "dac_clk" LOC = V8;
 NET "sync" IOSTANDARD = LVCMOS33;
 NET "sync" DRIVE = 12;
 NET "sync" SLEW = FAST;
-NET "dac_clk" LOC = C5;
 NET "sync" LOC = U8;
 NET "dac0_data" IOSTANDARD = LVCMOS33;
 NET "dac0_data" DRIVE = 12;
 NET "dac0_data" SLEW = FAST;
 NET "dac0_data" LOC = C4;
+
+NET "enable" IOSTANDARD = LVCMOS33;
+NET "enable" DRIVE = 12;
+NET "enable" SLEW = FAST;
+NET "enable" LOC = A5;
 
 NET "fb_mem_addr[0]" IOSTANDARD = LVCMOS33;
 NET "fb_mem_addr[1]" IOSTANDARD = LVCMOS33;
@@ -68,7 +83,7 @@ NET "fb_mem_addr[12]" SLEW = SLOW;
 NET "fb_mem_addr[13]" SLEW = SLOW;
 NET "fb_mem_addr[14]" SLEW = SLOW;
 NET "fb_mem_addr[15]" SLEW = SLOW;
-NET "fb_mem_addr[0]" LOC = E16;
+NET "fb_mem_addr[0]" LOC = C5;
 NET "fb_mem_addr[1]" LOC = B4;
 NET "fb_mem_addr[2]" LOC = B3;
 NET "fb_mem_addr[3]" LOC = B2;
@@ -132,8 +147,8 @@ NET "fb_mem_data[12]" SLEW = SLOW;
 NET "fb_mem_data[13]" SLEW = SLOW;
 NET "fb_mem_data[14]" SLEW = SLOW;
 NET "fb_mem_data[15]" SLEW = SLOW;
-NET "fb_mem_data[0]" LOC = A5;
-NET "fb_mem_data[1]" LOC = A4;
+NET "fb_mem_data[0]" LOC = F17;
+NET "fb_mem_data[1]" LOC = E16;
 NET "fb_mem_data[2]" LOC = A3;
 NET "fb_mem_data[3]" LOC = A2;
 NET "fb_mem_data[4]" LOC = T3;
@@ -148,4 +163,6 @@ NET "fb_mem_data[12]" LOC = N9;
 NET "fb_mem_data[13]" LOC = T7;
 NET "fb_mem_data[14]" LOC = V6;
 NET "fb_mem_data[15]" LOC = V7;
-
+#Created by Constraints Editor (xc6slx16-csg324-2) - 2015/10/23
+NET "ext_clk" TNM_NET = ext_clk;
+TIMESPEC TS_ext_clk = PERIOD "ext_clk" 10 MHz HIGH 50%;
